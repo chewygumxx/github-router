@@ -1,15 +1,26 @@
+---
+ctime: 2026-11-08
+mtime: 2026-11-08
+spdx: GPL-3.0-only
+title: github-router
+description: >-
+  Route standardised URLs to personal GitHub repositories and raw files.
+tags:
+  - github
+  - router
+  - cloudflare-worker
+---
+
+<!--
+   -
+   - ~chewygumxx/github-router.git
+   - ::: :/README.md
+   -
+   -->
+
 # github-router
 
-To install dependencies:
+Cloudflare Worker dedicated to serving requests to gh.cgxx.dev URIs of
+standardised format to my personal GitHub assets.
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run src/index.js
-```
-
-This project was created using `bun init` in bun v1.4.2. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+<!-- vim:set expandtab shiftwidth=2 filetype=markdown foldlevel=3: -->

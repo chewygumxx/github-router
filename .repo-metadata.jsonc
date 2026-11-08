@@ -1,0 +1,26 @@
+// vim:set expandtab shiftwidth=4 filetype=jsonc:
+// SPDX-License-Identifier: GPL-3.0-only
+
+//
+//
+// ~chewygumxx/github-router.git
+// ::: :/.repo-metadata.jsonc
+//
+//
+
+{
+    "$schema": "https://raw.githubusercontent.com/chewygumxx/sync-repo-metadata/refs/tags/v2/schema.json",
+    "name": "github-router",
+    "owner": "chewygumxx",
+    "slug": "chewygumxx/github-router",
+    "default_branch": "main",
+    "description": "Cloudflare Worker dedicated to serving requests to gh.cgxx.dev URIs of standardised format to my personal GitHub assets.",
+    "category": "cloudflare-worker",
+    "topics": ["router", "github", "cloudflare-worker"],
+    "license": {
+        "filepath": "./LICENSE",
+        "spdx_id": "GPL-3.0-only",
+        "full_name": "GNU General Public License v3.0 only",
+        "url": "https://spdx.org/licenses/GPL-3.0-only"
+    }
+}
