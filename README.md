@@ -113,8 +113,11 @@ reserved for tests and tooling. Generated declarations are excluded from
 formatting and linting.
 
 Integration tests use the installed Wrangler test harness and intercept
-outbound GitHub requests with fixed responses. They do not need GitHub or
-Cloudflare credentials or live GitHub access. They validate runtime behavior,
+outbound GitHub requests with fixed responses. A separate test-only Worker
+fixture rejects fetch inside workerd to test network-error handling, because
+Miniflare converts Node mock exceptions into HTTP 500 responses. Tests do not
+need GitHub or Cloudflare credentials or live GitHub access. They validate
+runtime behavior,
 not deployed DNS/TLS or all GitHub branch-resolution cases.
 
 ## Configuration and deployment

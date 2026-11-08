@@ -35,7 +35,8 @@ min_version = "2026.9.0"
 
 [tools]
 # Javascript/TypeScript Runtime
-bun = "1.4"
+bun  = "1.4"
+node = "24"
 
 # Secrets
 # sops and age support encrypted local configuration.

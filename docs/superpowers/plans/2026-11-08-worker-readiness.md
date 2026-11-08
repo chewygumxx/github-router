@@ -58,15 +58,15 @@ worker-configuration.d.ts, .biome.json, test/types/worker.ts.
 **Interfaces:** bun run typecheck checks Worker and tooling projects;
 bun run types regenerates declarations, types:check validates freshness.
 
-- [ ] Add a Worker type fixture with expected errors for Bun, process, and
+- [x] Add a Worker type fixture with expected errors for Bun, process, and
       invalid parsePath input; show the current configuration fails it.
-- [ ] Generate declarations with Wrangler, isolate source from Bun tests,
+- [x] Generate declarations with Wrangler, isolate source from Bun tests,
       enable strict checkJs, and add JSDoc types to production functions.
-- [ ] Exclude generated declarations from Biome and pin the Wrangler floor
+- [x] Exclude generated declarations from Biome and pin the Wrangler floor
       needed by the harness; preserve locked versions when possible.
-- [ ] Verify the type fixture, both type projects, generated freshness,
+- [x] Verify the type fixture, both type projects, generated freshness,
       existing unit tests, lint, and dry-run bundle.
-- [ ] Commit the type boundary and generated declarations.
+- [x] Commit the type boundary and generated declarations.
 
 ## Task 4: Workerd integration coverage
 
@@ -75,13 +75,13 @@ README.md if commands require adjustment.
 **Interfaces:** test:unit uses Bun; test:integration uses Node; test and check
 run both. No network access is required for GitHub fixtures.
 
-- [ ] Add harness tests for documented redirects, encoded refs, errors,
+- [x] Add harness tests for documented redirects, encoded refs, errors,
       raw GET/HEAD, upstream 404/network errors, metadata, and web HEAD.
-- [ ] Run the suite against the existing implementation; investigate any
+- [x] Run the suite against the existing implementation; investigate any
       mismatch with the existing contract before changing production code.
-- [ ] Temporarily mutate raw routing and verify integration tests fail;
+- [x] Temporarily mutate raw routing and verify integration tests fail;
       restore production source and verify green.
-- [ ] Wire scripts and Node toolchain; verify full check and frozen install.
-- [ ] Commit tests and toolchain changes.
-- [ ] Obtain one independent whole-branch review; address concrete blockers.
-- [ ] Verify the final tree is clean and report commits and evidence limits.
+- [x] Wire scripts and Node toolchain; verify full check and frozen install.
+- [x] Commit tests and toolchain changes.
+- [x] Obtain one independent whole-branch review; address concrete blockers.
+- [x] Verify the final tree is clean and report commits and evidence limits.

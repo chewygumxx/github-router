@@ -17,12 +17,14 @@
     "scripts": {
         "dev": "wrangler dev",
         "deploy": "wrangler deploy",
-        "check": "bun run lint && bun run typecheck && bun test && wrangler deploy --dry-run",
-        "test": "bun test",
+        "check": "bun run lint && bun run typecheck && bun run test && wrangler deploy --dry-run",
+        "test": "bun run test:unit && bun run test:integration",
         "lint": "biome check . && markdownlint-cli2 '**/*.md' '#node_modules'",
         "typecheck": "bun run types:check && tsc -p jsconfig.json && tsc -p tsconfig.json",
         "types": "wrangler types",
-        "types:check": "wrangler types --check"
+        "types:check": "wrangler types --check",
+        "test:unit": "bun test ./src",
+        "test:integration": "node --test test/*.integration.mjs"
     },
     "devDependencies": {
         "@biomejs/biome": "^2.6.6",
@@ -34,5 +36,8 @@
         "@types/bun": "^1.4.4",
         "typescript": "^7.0.2",
         "wrangler": "^4.158.0"
+    },
+    "engines": {
+        "node": ">=24"
     }
 }
