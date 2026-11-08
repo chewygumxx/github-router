@@ -1,12 +1,15 @@
+// vim:set expandtab shiftwidth=4 filetype=javascript:
+// SPDX-License-Identifier: GPL-3.0-only
 
-const OWNER = "chewygumxx";
+//
+//
+// ~chewygumxx/github-router.git
+// ::: :/src/index.js
+//
+//
 
-const HOSTS = {
-    web: "gh.cgxx.dev",
-    raw: "raw.gh.cgxx.dev",
-};
-
-const REPO_PATTERN = /^[a-zA-Z0-9_.-]+$/;
+import { config } from "./config.js";
+import { githubURL, parsePath } from "./url.js";
 
 function error(message, status = 400) {
     return new Response(message, {
@@ -17,79 +20,16 @@ function error(message, status = 400) {
     });
 }
 
-function parsePath(pathname) {
-    const [selector, ...segments] = pathname
-        .slice(1)
-        .split("/");
-
-    if (!selector) {
-        return null;
-    }
-
-    const decoded = decodeURIComponent(selector);
-    const separator = decoded.indexOf("@");
-
-    const repo = separator < 0
-        ? decoded
-        : decoded.slice(0, separator);
-
-    const ref = separator < 0
-        ? "HEAD"
-        : decoded.slice(separator + 1);
-
-    if (
-        !REPO_PATTERN.test(repo) ||
-        repo === "." ||
-        repo === ".." ||
-        !ref ||
-        /[?#@\\]/.test(ref)
-    ) {
-        throw new Error("Invalid repository or reference");
-    }
-
-    return {
-        repo,
-        ref,
-        explicitRef: separator >= 0,
-        path: segments.join("/"),
-        directory: pathname.endsWith("/"),
-    };
-}
-
-function githubURL(parsed) {
-    const {
-        repo,
-        ref,
-        explicitRef,
-        path,
-        directory,
-    } = parsed;
-
-    const base = `https://github.com/${OWNER}/${repo}`;
-
-    if (!path) {
-        return explicitRef
-            ? `${base}/tree/${encodeURIComponent(ref)}`
-            : base;
-    }
-
-    const kind = directory ? "tree" : "blob";
-
-    return `${base}/${kind}/${encodeURIComponent(ref)}/${path}`;
-}
-
 async function fetchRaw(request, parsed) {
     const { repo, ref, path, directory } = parsed;
 
     if (!path || directory) {
-        return error(
-            "Raw requests require a file path.",
-        );
+        return error("Raw requests require a file path.");
     }
 
     const upstreamURL = [
         "https://raw.githubusercontent.com",
-        OWNER,
+        config.owner,
         repo,
         encodeURIComponent(ref),
         path,
@@ -106,14 +46,11 @@ async function fetchRaw(request, parsed) {
     headers.set("Access-Control-Allow-Origin", "*");
     headers.set("X-Content-Type-Options", "nosniff");
 
-    return new Response(
-        request.method === "HEAD" ? null : upstream.body,
-        {
-            status: upstream.status,
-            statusText: upstream.statusText,
-            headers,
-        },
-    );
+    return new Response(request.method === "HEAD" ? null : upstream.body, {
+        status: upstream.status,
+        statusText: upstream.statusText,
+        headers,
+    });
 }
 
 export default {
@@ -131,11 +68,11 @@ export default {
 
         // A workers.dev deployment is also treated
         // as the normal GitHub web interface.
-        const raw = url.hostname === HOSTS.raw;
+        const raw = url.hostname === config.hosts.raw;
 
         if (
-            url.hostname !== HOSTS.web &&
-            url.hostname !== HOSTS.raw &&
+            url.hostname !== config.hosts.web &&
+            url.hostname !== config.hosts.raw &&
             !url.hostname.endsWith(".workers.dev")
         ) {
             return error("Unknown hostname", 404);
@@ -152,10 +89,7 @@ export default {
         if (!parsed) {
             return raw
                 ? error("Repository and file path required")
-                : Response.redirect(
-                    `https://github.com/${OWNER}`,
-                    302,
-                );
+                : Response.redirect(`https://github.com/${config.owner}`, 302);
         }
 
         if (raw) {
@@ -171,4 +105,3 @@ export default {
         return Response.redirect(destination, 302);
     },
 };
-
