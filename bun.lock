@@ -13,7 +13,7 @@
         "@chewygumxx/yamllint-config": "^1.0.1",
         "@types/bun": "^1.4.4",
         "typescript": "^7.0.2",
-        "wrangler": "^4.0.0",
+        "wrangler": "^4.158.0",
       },
     },
   },

@@ -33,23 +33,23 @@ bundle with Wrangler's Node-driven workerd integration harness.
 **Files:** .gitignore.
 **Interfaces:** Local generated files ignored; example files remain addable.
 
-- [ ] Check repository-only ignore decisions without global Git excludes.
-- [ ] Add .wrangler/, .dev.vars*, .env*, and example exceptions.
-- [ ] Verify state/secrets ignored and example files not ignored.
-- [ ] Commit the exclusions.
+- [x] Check repository-only ignore decisions without global Git excludes.
+- [x] Add .wrangler/, .dev.vars*, .env*, and example exceptions.
+- [x] Verify state/secrets ignored and example files not ignored.
+- [x] Commit the exclusions.
 
 ## Task 2: Public documentation and agent guidance
 
 **Files:** README.md, AGENTS.md, this plan and its design.
 **Interfaces:** Existing URL contract and documented development commands.
 
-- [ ] Document URL examples, methods, references, trailing slashes, public
+- [x] Document URL examples, methods, references, trailing slashes, public
       resources, query behavior, configuration, and deferred operations.
-- [ ] Document Bun setup, Node prerequisite, normal/raw local modes, types,
+- [x] Document Bun setup, Node prerequisite, normal/raw local modes, types,
       checks, and deployment commands without deploying.
-- [ ] Add runtime and tooling guidance to AGENTS.md.
-- [ ] Validate Markdown and frontmatter; check examples against current tests.
-- [ ] Commit documentation and implementation records.
+- [x] Add runtime and tooling guidance to AGENTS.md.
+- [x] Validate Markdown and frontmatter; check examples against current tests.
+- [x] Commit documentation and implementation records.
 
 ## Task 3: Production JavaScript type boundary
 

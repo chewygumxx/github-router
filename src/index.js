@@ -11,6 +11,7 @@
 import { config } from "./config.js";
 import { githubURL, parsePath } from "./url.js";
 
+/** @param {string} message */
 function error(message, status = 400) {
     return new Response(message, {
         status,
@@ -20,6 +21,10 @@ function error(message, status = 400) {
     });
 }
 
+/**
+ * @param {Request} request
+ * @param {import("./url.js").ParsedPath} parsed
+ */
 async function fetchRaw(request, parsed) {
     const { repo, ref, path, directory } = parsed;
 
@@ -54,6 +59,7 @@ async function fetchRaw(request, parsed) {
 }
 
 export default {
+    /** @param {Request} request */
     async fetch(request) {
         if (!["GET", "HEAD"].includes(request.method)) {
             return new Response("Method Not Allowed", {

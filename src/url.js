@@ -14,6 +14,19 @@ import { config } from "./config.js";
 // URL handling logic
 //
 
+/**
+ * @typedef {object} ParsedPath
+ * @property {string} repo
+ * @property {string} ref
+ * @property {boolean} explicitRef
+ * @property {string} path
+ * @property {boolean} directory
+ */
+
+/**
+ * @param {string} pathname
+ * @returns {ParsedPath | null}
+ */
 export function parsePath(pathname) {
     const [selector, ...segments] = pathname.slice(1).split("/");
 
@@ -49,6 +62,7 @@ export function parsePath(pathname) {
     };
 }
 
+/** @param {ParsedPath} parsed */
 export function githubURL(parsed) {
     const { repo, ref, explicitRef, path, directory } = parsed;
 

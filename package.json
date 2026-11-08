@@ -20,7 +20,9 @@
         "check": "bun run lint && bun run typecheck && bun test && wrangler deploy --dry-run",
         "test": "bun test",
         "lint": "biome check . && markdownlint-cli2 '**/*.md' '#node_modules'",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "bun run types:check && tsc -p jsconfig.json && tsc -p tsconfig.json",
+        "types": "wrangler types",
+        "types:check": "wrangler types --check"
     },
     "devDependencies": {
         "@biomejs/biome": "^2.6.6",
@@ -31,6 +33,6 @@
         "@chewygumxx/yamllint-config": "^1.0.1",
         "@types/bun": "^1.4.4",
         "typescript": "^7.0.2",
-        "wrangler": "^4.0.0"
+        "wrangler": "^4.158.0"
     }
 }

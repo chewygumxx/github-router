@@ -9,6 +9,6 @@
         }
     },
     "files": {
-        "includes": ["!**/*.md"]
+        "includes": ["!**/*.md", "!worker-configuration.d.ts"]
     }
 }
