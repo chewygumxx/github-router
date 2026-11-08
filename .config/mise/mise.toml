@@ -1,0 +1,51 @@
+# vim:set expandtab shiftwidth=4 filetype=toml:
+# SPDX-License-Identifier: GPL-3.0-only
+#:tombi toml-version = "v1.1.0"
+#:schema https://mise.jdx.dev/schema/mise.json
+
+#
+#
+# ~chewygumxx/github-router.git
+# ::: :/.config/mise/mise.toml
+#
+#
+
+#
+# Repository configuration of the mise development utility
+#
+# https://mise.jdx.dev/configuration.html
+# https://mise.jdx.dev/configuration/reference.html
+#
+
+#
+# CI's TOML job installs tombi from here with GitHub Action
+# `jdx/mise-action`; the other jobs install their tools themselves.
+# https://mise.jdx.dev/configuration.html
+#
+
+# ---------------
+# Mise Intrinsic
+# ---------------
+
+min_version = "2026.9.0"
+
+# ------
+# Tools
+# ------
+
+[tools]
+# Javascript/TypeScript Runtime
+bun = "1.4"
+
+# Secrets
+# sops and age support encrypted local configuration.
+"aqua:getsops/sops"    = "3.13.3"
+"aqua:FiloSottile/age" = "1.3.2"
+
+# ** Lint and Format **
+# YAML
+"aqua:astral-sh/uv" = "0.12.19"
+"pypi:yamllint"     = "1.38.0"
+
+# TOML
+"aqua:tombi-toml/tombi" = "1.5.5"

@@ -1,34 +1,44 @@
-# dependencies (bun install)
+# vim:set expandtab shiftwidth=4 filetype=gitignore:
+# SPDX-License-Identifier: GPL-3.0-only
+
+#
+#
+# ~chewygumxx/github-router.git
+# ::: :/.gitignore
+#
+#
+
+# Dependency
 node_modules
 
-# output
+# Output
 out
 dist
 *.tgz
 
-# code coverage
+# Coverage
 coverage
 *.lcov
 
-# logs
+# Log
 logs
 _.log
 report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
-# dotenv environment variable files
+# Environment
 .env
 .env.development.local
 .env.test.local
 .env.production.local
 .env.local
 
-# caches
+# Cache
 .eslintcache
 .cache
 *.tsbuildinfo
 
-# IntelliJ based IDEs
+# IntelliJ
 .idea
 
-# Finder (MacOS) folder config
+# MacOS
 .DS_Store

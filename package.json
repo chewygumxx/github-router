@@ -1,16 +1,36 @@
-
 {
-  "name": "github-router",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "check": "wrangler deploy --dry-run"
-  },
-  "devDependencies": {
-    "wrangler": "^4.0.0"
-  }
+    "name": "github-router",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "description": "Cloudflare Worker dedicated to serving requests to gh.cgxx.dev URIs of standardised format to my personal GitHub assets.",
+    "keywords": [
+        "github",
+        "router",
+        "cloudflare-worker"
+    ],
+    "homepage": "https://github.com/chewygumxx/github-router#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chewygumxx/github-router.git"
+    },
+    "scripts": {
+        "dev": "wrangler dev",
+        "deploy": "wrangler deploy",
+        "check": "bun run lint && bun run typecheck && bun test && wrangler deploy --dry-run",
+        "test": "bun test",
+        "lint": "biome check . && markdownlint-cli2 '**/*.md' '#node_modules'",
+        "typecheck": "tsc --noEmit"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.6.6",
+        "@chewygumxx/biome-config": "^1.1.0",
+        "@chewygumxx/commitlint-config": "^1.1.0",
+        "@chewygumxx/cz-commitlint": "^1.0.2",
+        "@chewygumxx/markdownlint-cli2-config": "^1.1.0",
+        "@chewygumxx/yamllint-config": "^1.0.1",
+        "@types/bun": "^1.4.4",
+        "typescript": "^7.0.2",
+        "wrangler": "^4.0.0"
+    }
 }
-

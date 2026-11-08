@@ -1,0 +1,14 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.6.6/schema.json",
+    "extends": ["@chewygumxx/biome-config"],
+    "linter": {
+        "rules": {
+            "correctness": {
+                "noUndeclaredVariables": "error"
+            }
+        }
+    },
+    "files": {
+        "includes": ["!**/*.md"]
+    }
+}

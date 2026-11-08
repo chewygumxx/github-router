@@ -1,19 +1,27 @@
+// vim:set expandtab shiftwidth=4 filetype=jsonc:
+// SPDX-License-Identifier: GPL-3.0-only
+
+//
+//
+// ~chewygumxx/github-router.git
+// ::: :/wrangler.jsonc
+//
+//
 
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "github-router",
-  "main": "src/index.js",
-  "compatibility_date": "2026-11-08",
-  "workers_dev": true,
-  "routes": [
-    {
-      "pattern": "gh.cgxx.dev",
-      "custom_domain": true
-    },
-    {
-      "pattern": "raw.gh.cgxx.dev",
-      "custom_domain": true
-    }
-  ]
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "github-router",
+    "main": "src/index.js",
+    "compatibility_date": "2026-11-08",
+    "workers_dev": true,
+    "routes": [
+        {
+            "pattern": "gh.cgxx.dev",
+            "custom_domain": true
+        },
+        {
+            "pattern": "raw.gh.cgxx.dev",
+            "custom_domain": true
+        }
+    ]
 }
-
