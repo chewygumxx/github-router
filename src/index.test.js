@@ -1,8 +1,22 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
+/**
+ * Fast Bun handler tests for the public URL contract and response construction.
+ * Upstream fetch is mocked and restored after every test. HTTP-runtime HEAD
+ * semantics are covered separately by the Node-driven workerd integration suite.
+ * @module github-router/handler-tests
+ */
+
 import { afterEach, expect, mock, spyOn, test } from "bun:test";
 import worker from "./index.js";
 
+/**
+ * Invokes the real handler with a request to the configured web hostname.
+ * This is a direct function call, not a workerd HTTP request.
+ * @param {string} path Path/query appended to the web origin.
+ * @param {RequestInit} [options] Request method, headers, and other init values.
+ * @returns {Promise<Response>} Handler response for assertions.
+ */
 const request = (path, options) =>
     worker.fetch(new Request(`https://gh.cgxx.dev${path}`, options));
 
